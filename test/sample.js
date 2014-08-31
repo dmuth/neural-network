@@ -3,6 +3,9 @@
 */
 
 
+var should = require("should");
+
+
 suite("Sample", function() {
 
 	setup(function(done) {
