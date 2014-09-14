@@ -7,6 +7,23 @@ a {
   color: #00B7FF;
 }
 
+#message {
+	color: black;
+	background-color: #cccccc;
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid black;
+}
+
+/**
+* Placeholder for when there is no message so that the rest of
+* the contents are always pushed down by the same amount.
+*/
+#message_empty {
+	padding: 5px;
+	margin: 5px;
+}
+
 #outer {
 	margin-left: auto;
 	margin-right: auto;

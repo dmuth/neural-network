@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session')
 
 var routes = require('./routes/index');
 
@@ -20,6 +21,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+	secret: 'to the moon',
+	resave: true,
+	saveUninitialized: true,
+	}))
+
 
 
 /*
@@ -29,8 +36,7 @@ TODO:
 - X CSS with colors
 - X figure out forms in Express, how to handle submissions?
 - X create form is "is this color red?"
-- 1 figure out how to manipulate session data
-	- then I can set status messages on / saying that a choice was accepted
+- X figure out how to manipulate session data
 - load lib/nn/
 	- should return an object
 		- add(r, g, b)

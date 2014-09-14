@@ -4,6 +4,10 @@ block content
 	h1 #{title}
 
 	div#outer
+		if message
+			div#message #{message}
+		else
+			div#message_empty &nbsp;
 		div#box( style="background-color: #{color.color};")
 		div#caption
 			form( method="post" action="add")
