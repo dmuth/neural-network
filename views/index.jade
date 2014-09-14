@@ -7,20 +7,21 @@ block content
 		div#box( style="background-color: #{color.color};")
 		div#caption
 			form( method="post" action="add")
-				p.
-					is this red? yes/no
 				input(type="hidden", name="red", value="#{color.red}")
 				input(type="hidden", name="green", value="#{color.green}")
 				input(type="hidden", name="blue", value="#{color.blue}")
-				input(type="submit", name="is_red", value="Yes")
-				input(type="submit", name="is_red", value="No")
+				p.
+					Is this color red?
+				div#buttons
+					input#red_yes(type="submit", name="is_red", value="Yes")
+					input#red_no(type="submit", name="is_red", value="No")
 
 			p.
 				my guess (only if trained)
 			p.
 				current training stats
 			form( method="post" action="train")
-				input(
+				input#train(
 					type="submit", 
 					value="Train Neural Network based on current guesses"
 					)
