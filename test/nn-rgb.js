@@ -47,7 +47,7 @@ suite("Neural Network", function() {
 		nn.numTrained().should.equal(data.length);
 
 		var diff = 0.1;
-		var result = nn.guess({ r: 1, g: 0.4, b: 0 });
+		var result = nn.guess({ r: "ff", g: "10", b: "0" });
 		result.red.should.be.above(1 - diff);
 		
 		done();
