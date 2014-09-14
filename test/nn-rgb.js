@@ -33,6 +33,9 @@ suite("Neural Network", function() {
 		nn.add(data[1].input, data[1].output);
 		nn.add(data[2].input, data[2].output);
 
+		nn.length().should.equal(data.length);
+		nn.numTrained().should.equal(0);
+
 		var options = {
 			errorThresh: 0.001,
 			iterations: 100000,
@@ -41,6 +44,7 @@ suite("Neural Network", function() {
 			learningRate: 0.3,
 			};
 		nn.train(options);
+		nn.numTrained().should.equal(data.length);
 
 		var diff = 0.1;
 		var result = nn.guess({ r: 1, g: 0.4, b: 0 });
