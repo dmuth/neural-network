@@ -59,7 +59,7 @@ router.post("/add", function(req, res) {
 router.post("/train", function(req, res) {
 
 	var options = {
-		errorThresh: 0.001,
+		errorThresh: 0.01,
 		iterations: 100000,
 		log: true, // Debugging
 		logPeriod: 100,
