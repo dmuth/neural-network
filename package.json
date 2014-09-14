@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --ui tdd --reporter spec test"
+    "test": "mocha --ui tdd -t 10000 --reporter spec test"
   },
   "author": "",
   "license": "GPL v2",
