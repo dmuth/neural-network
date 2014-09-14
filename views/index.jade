@@ -4,15 +4,25 @@ block content
 	h1 #{title}
 
 	div#outer
-		div#box(style="background-color: #{color.color};")
+		div#box( style="background-color: #{color.color};")
 		div#caption
-			p.
-				is this red? yes/no
+			form( method="post" action="add")
+				p.
+					is this red? yes/no
+				input(type="hidden", name="red", value="#{color.red}")
+				input(type="hidden", name="green", value="#{color.green}")
+				input(type="hidden", name="blue", value="#{color.blue}")
+				input(type="submit", name="is_red", value="Yes")
+				input(type="submit", name="is_red", value="No")
+
 			p.
 				my guess (only if trained)
 			p.
 				current training stats
-			p.
-				train neural network based on feedback
+			form( method="post" action="train")
+				input(
+					type="submit", 
+					value="Train Neural Network based on current guesses"
+					)
 
 

@@ -27,8 +27,10 @@ TODO:
 
 - X put colors in main page
 - X CSS with colors
-- 2 figure out forms in Express, how to handle submissions?
-- 3 create form is "is this color red?"
+- X figure out forms in Express, how to handle submissions?
+- X create form is "is this color red?"
+- 1 figure out how to manipulate session data
+	- then I can set status messages on / saying that a choice was accepted
 - load lib/nn/
 	- should return an object
 		- add(r, g, b)
