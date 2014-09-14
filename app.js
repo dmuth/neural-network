@@ -36,23 +36,10 @@ app.use(session({
 
 /*
 TODO: 
-
-- X put colors in main page
-- X CSS with colors
-- X figure out forms in Express, how to handle submissions?
-- X create form is "is this color red?"
-- X figure out how to manipulate session data
-- load lib/nn/
-	- should return an object
-		- add(r, g, b)
-		- length() - return number of pieces of training data
-		- train()
-			- create new brain object and train
-		- guess()
-- conditionally display train button, otherwise require 5 pieces of training data
 - /guess endpoint that shows like 10 small boxes, and guesses
 - look into csrf module to require a visit to the page itself
 	- csurf module?
+- bootstrap CSS
 */
 
 app.use('/', routes);
