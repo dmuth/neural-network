@@ -25,16 +25,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 /*
 TODO: 
 
-- put colors in main page
-- figure out forms in Express, how to handle submissions?
-- create form is "is this color red?"
+- X put colors in main page
+- X CSS with colors
+- 2 figure out forms in Express, how to handle submissions?
+- 3 create form is "is this color red?"
 - load lib/nn/
 	- should return an object
 		- add(r, g, b)
 		- train()
 			- create new brain object
 		- guess()
-- 
+- look into csrf module to require a visit to the page itself
+	- csurf module?
 */
 
 app.use('/', routes);

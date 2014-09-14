@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	h1 #{title}
+
+	div#outer
+		div#box(style="background-color: #{color};")
+		div#caption
+			p.
+				is this red? yes/no
+			p.
+				my guess (only if trained)
+			p.
+				current training stats
+			p.
+				train neural network based on feedback
+
+
