@@ -22,16 +22,13 @@ block content
 
 			p.
 				Number of items in network: #{nn_length}
-			if num_trained
-				p trained: #{num_trained}
-			else
-				p not trained!
 			p.
-				current training stats
-			form( method="post" action="train")
-				input#train(
-					type="submit", 
-					value="Train Neural Network based on current guesses"
-					)
+				Number of items trained: #{num_trained}
+			if nn_length
+				form( method="post" action="train")
+					input#train(
+						type="submit", 
+						value="Train Neural Network based on current guesses"
+						)
 
 
