@@ -42,7 +42,7 @@ TODO:
 		- add(r, g, b)
 		- length() - return number of pieces of training data
 		- train()
-			- create new brain object
+			- create new brain object and train
 		- guess()
 - conditionally display train button, otherwise require 5 pieces of training data
 - /guess endpoint that shows like 10 small boxes, and guesses
