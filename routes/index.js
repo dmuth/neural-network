@@ -18,12 +18,23 @@ router.get('/', function(req, res) {
 	var length = nn.length();
 	var num_trained = nn.numTrained();
 
+	var red_guess = "";
+	if (num_trained) {
+		var input = {
+			r: color.red,
+			g: color.green,
+			b: color.blue,
+			};
+		red_guess = nn.guess(input);
+	}
+
 	res.render('index', { 
 		title: "Neural Network", 
 		color: color,
 		message: message,
 		nn_length: length,
 		num_trained: num_trained,
+		red_guess: red_guess.red,
 		});
 
 });
