@@ -11,9 +11,9 @@ block content
 		div#box( style="background-color: #{color.color};")
 		div#caption
 			form( method="post" action="add")
-				input(type="hidden", name="red", value="#{color.red}")
-				input(type="hidden", name="green", value="#{color.green}")
-				input(type="hidden", name="blue", value="#{color.blue}")
+				input(type="hidden", name="color_red", value="#{color.red}")
+				input(type="hidden", name="color_green", value="#{color.green}")
+				input(type="hidden", name="color_blue", value="#{color.blue}")
 				p.
 					Is this color red?
 				div#buttons
@@ -21,7 +21,11 @@ block content
 					input#red_no(type="submit", name="is_red", value="No")
 
 			p.
-				my guess (only if trained)
+				Number of items in network: #{nn_length}
+			if num_trained
+				p trained: #{num_trained}
+			else
+				p not trained!
 			p.
 				current training stats
 			form( method="post" action="train")

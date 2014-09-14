@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var colors = require("../lib/randomColor");
+var nn = require("../lib/nn/rgb");
 
 router.get('/', function(req, res) {
 
@@ -11,13 +12,18 @@ router.get('/', function(req, res) {
 	// Make a copy of the message than wipe it from the session, 
 	// as it should only be dispalyed once.
 	//
-	message = req.session.message;
+	var message = req.session.message;
 	req.session.message = "";
+
+	var length = nn.length();
+	var num_trained = nn.numTrained();
 
 	res.render('index', { 
 		title: "Neural Network", 
 		color: color,
 		message: message,
+		nn_length: length,
+		num_trained: num_trained,
 		});
 
 });
@@ -28,7 +34,19 @@ router.get('/', function(req, res) {
 */
 router.post("/add", function(req, res) {
 
-	// TODO: add to training data req.body values
+	var input = {
+		r: req.body.color_red,
+		g: req.body.color_green,
+		b: req.body.color_blue,
+		};
+
+	var output = {red: 0};
+	if (req.body.is_red == "Yes") {
+		output = {red: 1};
+	}
+
+	nn.add(input, output);
+
 	req.session.message = "Answer saved!";
 	res.redirect("/");
 
@@ -40,8 +58,15 @@ router.post("/add", function(req, res) {
 */
 router.post("/train", function(req, res) {
 
-	// TODO: possibly display a page with a meta refresh of 2 seconds
-	// ...only if training takes too long!
+	var options = {
+		errorThresh: 0.001,
+		iterations: 100000,
+		log: true, // Debugging
+		logPeriod: 100,
+		//learningRate: 0.3,
+		};
+	nn.train(options);
+
 	req.session.message = "Neural network trained!";
 	res.redirect("/");
 
