@@ -1,67 +1,11 @@
-body {
-  padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: #00B7FF;
-}
-
-#message {
-	color: black;
-	background-color: #cccccc;
-	padding: 5px;
-	margin: 5px;
-	border: 1px solid black;
-}
-
-/**
-* Placeholder for when there is no message so that the rest of
-* the contents are always pushed down by the same amount.
-*/
-#message_empty {
-	padding: 5px;
-	margin: 5px;
-}
-
-#outer {
-	margin-left: auto;
-	margin-right: auto;
-	width: 300px;
-}
 
 #box {
-	width: 300px;
-	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 400px;
+	height: 400px;
 }
 
-#caption {
-	padding-left: 5px;
-}
-
-#buttons {
-}
-
-input#red_yes {
-	width: 100px;
-	height: 50px;
-	font-size: 24px;
-    border-radius: 20px;
-	margin-right: 10px;
-}
-
-input#red_no {
-	width: 100px;
-	height: 50px;
-	font-size: 24px;
-    border-radius: 20px;
-}
-
-input#train {
-	width: 300px;
-	height: 50px;
-	font-size: 12px;
-    border-radius: 20px;
-}
 
 

@@ -18,14 +18,31 @@ router.get('/', function(req, res) {
 	var length = nn.length();
 	var num_trained = nn.numTrained();
 
+	//
+	// If the network is trained, take a guess on if the current color is red
+	//
 	var red_guess = "";
+	var percent = 0;
+	var percent_type = "danger";
+
 	if (num_trained) {
 		var input = {
 			r: color.red,
 			g: color.green,
 			b: color.blue,
 			};
-		red_guess = nn.guess(input);
+		red_guess = nn.guess(input).red;
+		percent = Math.floor(red_guess * 100);
+
+		if (percent >= 90) {
+			percent_type = "success";
+
+		} else if (percent >= 75) {
+			percent_type = "warning";
+
+		}
+
+
 	}
 
 	res.render('index', { 
@@ -34,7 +51,9 @@ router.get('/', function(req, res) {
 		message: message,
 		nn_length: length,
 		num_trained: num_trained,
-		red_guess: red_guess.red,
+		red_guess: red_guess,
+		percent: percent,
+		percent_type: percent_type,
 		});
 
 });
@@ -51,6 +70,7 @@ router.post("/add", function(req, res) {
 		b: req.body.color_blue,
 		};
 
+	//console.log("is_red?", req.body.is_red); // Debugging
 	var output = {red: 0};
 	if (req.body.is_red == "Yes") {
 		output = {red: 1};

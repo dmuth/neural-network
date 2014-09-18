@@ -1,40 +1,85 @@
 extends layout
 
 block content
-	h1 #{title}
 
-	div#outer
-		if message
-			div#message #{message}
-		else
-			div#message_empty &nbsp;
+	div(class="navbar navbar-inverse navbar-fixed-top" role="navigation")
+		div(class="container")
+			// Used for when in a narrow, mobile view
+			div(class="navbar-header")
+				button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse")
+					span(class="sr-only") Toggle navigation
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="navbar-brand" href="#") #{title}
 
-		div#box( style="background-color: #{color.color};")
+			// Wide menu for desktops
+			div(class="collapse navbar-collapse")
+				ul(class="nav navbar-nav")
+					li(class="active")
+						a(href="#") Home
+					//li
+					//	a(href="#about") About
+					//li
+					//	a(href="#contact") Contact
 
-		div#caption
-			form( method="post" action="add")
-				input(type="hidden", name="color_red", value="#{color.red}")
-				input(type="hidden", name="color_green", value="#{color.green}")
-				input(type="hidden", name="color_blue", value="#{color.blue}")
+	div(class="container-fluid")
+		div(class="starter-template")
 
-				p.
-					Is this color red?
-				div#buttons
-					input#red_yes(type="submit", name="is_red", value="Yes")
-					input#red_no(type="submit", name="is_red", value="No")
+			div(class="row") 
+				h1 Is this color red?
+				div(class="lead col-md-offset-3 col-md-6") 
+					| Teach me whether different colors are red, and then train 
+					| me so I can predict more colors.
+				.div(class="lead col-md-offset-3 col-md-6") 
+					div#box( style="background-color: #{color.color};") 
 
-			p.
-				Number of items in network: #{nn_length}
-			p.
-				Number of items trained: #{num_trained}
-			if red_guess
-				p Guess on if this is red: #{red_guess}
 
-			if nn_length
-				form( method="post" action="train")
-					input#train(
-						type="submit", 
-						value="Train Neural Network based on current guesses"
-						)
+			div(class="row") 
+				.div(class="lead col-md-offset-3 col-md-6") 
+					if message
+						div( class="alert alert-success" role="alert") #{message}
 
+			div(class="row") 
+				.div(class="lead col-md-offset-3 col-md-6") 
+
+					form( method="post" action="add")
+						input(type="hidden", name="color_red", value="#{color.red}")
+						input(type="hidden", name="color_green", value="#{color.green}")
+						input(type="hidden", name="color_blue", value="#{color.blue}")
+
+						div#buttons
+							button(type="submit" class="btn btn-lg btn-success" name="is_red" value="Yes") Yeah!
+							= " "
+							button(type="submit" class="btn btn-lg btn-danger" name="is_red" value="No") Nope!
+	
+			div(class="row") 
+				.div(class="lead col-md-offset-3 col-md-6") 
+
+					p.
+						Number of items in network: #{nn_length}
+					p.
+						Number of items trained: #{num_trained}
+
+					if red_guess
+						p Guess on if this is red: #{red_guess}
+
+						div(class="progress")
+							div(
+								class="progress-bar progress-bar-#{percent_type}" 
+								role="progressbar" 
+								aria-valuemin="0" aria-valuemax="100" 
+								style="width: #{percent}%;"
+								aria-valuenow="#{percent}" 
+								)
+								| #{percent}%
+
+					if nn_length
+						form( method="post" action="train")
+							button(type="submit" class="btn btn-lg btn-success" 
+								value="Train Neural Network based on current guesses"
+								) Train Neural Network based on current guesses
+
+
+	div.footer
 
