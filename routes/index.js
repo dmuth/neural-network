@@ -23,6 +23,7 @@ router.get('/', function(req, res) {
 	//
 	var red_guess = "";
 	var percent = 0;
+	var percent_width = 2;
 	var percent_type = "danger";
 
 	if (num_trained) {
@@ -42,6 +43,12 @@ router.get('/', function(req, res) {
 
 		}
 
+		//
+		// This ensures a minimum percentage width
+		//
+		if (percent > 2) {
+			percent_width = percent;
+		}
 
 	}
 
@@ -53,6 +60,7 @@ router.get('/', function(req, res) {
 		num_trained: num_trained,
 		red_guess: red_guess,
 		percent: percent,
+		percent_width: percent_width,
 		percent_type: percent_type,
 		});
 
