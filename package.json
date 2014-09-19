@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --ui tdd -t 10000 --reporter spec test"
+    "test": "mocha --ui tdd -t 10000 --recursive --reporter spec test"
   },
   "dependencies": {
     "body-parser": "~1.8.1",

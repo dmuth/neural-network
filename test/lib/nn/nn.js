@@ -3,9 +3,9 @@
 */
 
 
-var _common = require("./_common");
+var _common = require("../../_common");
 var should = require("should");
-var nn = require("../lib/nn");
+var nn = require("../../../lib/nn");
 
 
 suite("Neural Network", function() {
