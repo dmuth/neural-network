@@ -95,18 +95,23 @@ router.post("/add", function(req, res) {
 /**
 * Start training our neural network
 */
+var util = require("util");
 router.post("/train", function(req, res) {
 
 	var options = {
 		errorThresh: 0.01,
-		iterations: 100000,
+		iterations: 10000,
 		log: true, // Debugging
 		logPeriod: 100,
 		//learningRate: 0.3,
 		};
-	nn.train(options);
+	var result = nn.train(options);
 
-	req.session.message = "Neural network trained!";
+	req.session.message = util.format(
+			"Neural network trained! (Iterations: %d, Error: %d)",
+			result.iterations, result.error
+			);
+		
 	res.redirect("/");
 
 }); 
