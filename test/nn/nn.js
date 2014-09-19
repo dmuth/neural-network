@@ -42,13 +42,15 @@ suite("Neural Network", function() {
 
 		var options = {
 			errorThresh: 0.001,
-			iterations: 100000,
+			iterations: 10000,
 			//log: true, // Debugging
 			logPeriod: 100,
 			learningRate: 0.3,
 			};
-		nn.train(options);
+		var result = nn.train(options);
 		nn.numTrained().should.equal(data.length);
+		result.error.should.be.below(0.001);
+		result.iterations.should.be.above(1000);
 
 		var diff = 0.1;
 		nn.guess(data[0].input).should.be.below(data[0].output[0] + diff);
