@@ -1,9 +1,25 @@
+
 var express = require('express');
 var router = express.Router();
 
 var colors = require("../lib/randomColor");
 var nn = require("../lib/nn/rgb");
 
+
+//
+// Add a piece of data to the neural network
+//
+router.post("/add", require("./add")());
+
+//
+// Train our neural network
+//
+router.post("/train", require("./train")());
+
+
+//
+// The front page.
+//
 router.get('/', function(req, res) {
 
 	var color = colors.getRandomRGB(4);
@@ -65,56 +81,6 @@ router.get('/', function(req, res) {
 		});
 
 });
-
-
-/**
-* Add a piece of data to the neutral network.
-*/
-router.post("/add", function(req, res) {
-
-	var input = {
-		r: req.body.color_red,
-		g: req.body.color_green,
-		b: req.body.color_blue,
-		};
-
-	//console.log("is_red?", req.body.is_red); // Debugging
-	var output = {red: 0};
-	if (req.body.is_red == "Yes") {
-		output = {red: 1};
-	}
-
-	nn.add(input, output);
-
-	req.session.message = "Answer saved!";
-	res.redirect("/");
-
-});
-
-
-/**
-* Start training our neural network
-*/
-var util = require("util");
-router.post("/train", function(req, res) {
-
-	var options = {
-		errorThresh: 0.01,
-		iterations: 10000,
-		log: true, // Debugging
-		logPeriod: 100,
-		//learningRate: 0.3,
-		};
-	var result = nn.train(options);
-
-	req.session.message = util.format(
-			"Neural network trained! (Iterations: %d, Error: %d)",
-			result.iterations, result.error
-			);
-		
-	res.redirect("/");
-
-}); 
 
 
 module.exports = router;
