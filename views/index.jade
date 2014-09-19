@@ -49,9 +49,11 @@ block content
 						input(type="hidden", name="color_blue", value="#{color.blue}")
 
 						div#buttons
-							button(type="submit" class="btn btn-lg btn-success" name="is_red" value="Yes") (Y)eah!
+							button(type="submit" class="btn btn-lg btn-success" 
+								name="is_red" id="button_yes" value="Yes") (Y)eah!
 							= " "
-							button(type="submit" class="btn btn-lg btn-danger" name="is_red" value="No") (N)ope!
+							button(type="submit" class="btn btn-lg btn-danger" 
+								name="is_red" id="button_no" value="No") (N)ope!
 	
 			div(class="row") 
 				.div(class="lead col-md-offset-3 col-md-6") 
@@ -76,6 +78,7 @@ block content
 					if nn_length
 						form( method="post" action="train")
 							button(type="submit" class="btn btn-lg btn-success" 
+								id="button_train"
 								value="Train Neural Network based on current guesses"
 								) (T)rain Neural Network based on current guesses
 
@@ -85,4 +88,22 @@ block content
 block js-footer
 	script(type="text/javascript").
 		//
+		// Catch keypresses.  This makes training the neural network MUCH faster.
+		//
+		$(document).on("keydown", function(e) {
+
+			var code = (e.keyCode || e.which);
+			//console.log(code); // Debugging
+
+			if (code == 89) {
+				$("#button_yes").click();
+			} else if (code == 78) {
+				$("#button_no").click();
+			} else if (code == 84) {
+				$("#button_train").click();
+			}
+
+
+			});
+
 
