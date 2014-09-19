@@ -6,7 +6,7 @@ var nn = require("../lib/nn/rgb");
 
 router.get('/', function(req, res) {
 
-	var color = colors.getRandomRGB();
+	var color = colors.getRandomRGB(4);
 
 	//
 	// Make a copy of the message than wipe it from the session, 
