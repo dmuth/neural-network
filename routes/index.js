@@ -44,11 +44,6 @@ router.get('/', function(req, res) {
 	//
 	// If the network is trained, take a guess on if the current color is red
 	//
-	var red_guess = "";
-	var percent = 0;
-	var percent_width = 2;
-	var percent_type = "danger";
-
 	var guess_result = {};
 	if (num_trained) {
 		var input = {
@@ -56,7 +51,6 @@ router.get('/', function(req, res) {
 			g: color.green,
 			b: color.blue,
 			};
-
 		guess_result = guess.go(input);
 
 	}
