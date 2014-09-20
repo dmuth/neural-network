@@ -10,6 +10,17 @@ module.exports = function init() {
 
 	return(function(req, res) {
 
+		//
+		// Bail out if the network hasn't been trained at all.
+		//
+		var num = nn.length();
+		if (!num) {
+			req.session.message = 
+				"Can't train the neural network until you add some data!";
+			res.redirect("/");
+			return(null);
+		}
+
 		var options = {
 			errorThresh: 0.01,
 			iterations: 10000,
