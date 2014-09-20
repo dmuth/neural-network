@@ -51,6 +51,7 @@ suite("Neural Network", function() {
 		nn.numTrained().should.equal(data.length);
 		result.error.should.be.below(0.001);
 		result.iterations.should.be.above(1000);
+		result.elapsed.should.be.above(0.001);
 
 		var diff = 0.1;
 		nn.guess(data[0].input).should.be.below(data[0].output[0] + diff);
