@@ -23,6 +23,11 @@ router.post("/train", require("./train")());
 //
 router.get("/guess", require("./guess")());
 
+//
+// Clear out the neural network
+//
+router.get("/clear", require("./clear")());
+
 
 //
 // The front page.

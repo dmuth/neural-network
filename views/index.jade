@@ -61,7 +61,12 @@ block content
 							button(type="submit" class="btn btn-lg btn-success" 
 								id="button_train"
 								value="Train Neural Network based on current guesses"
-								) (T)rain Neural Network based on current guesses
+								) (T)rain Neural Network
+							= " "
+							button(type="submit" class="btn btn-lg btn-danger" 
+								id="button_clear"
+								value="Clear"
+								) (C)lear Neural Network
 
 	div.footer
 
@@ -69,13 +74,19 @@ block content
 block js-footer
 
 	script(type="text/javascript").
+
+		$("#button_clear").on("click", function() {
+				window.location = "/clear";
+				return(false);
+			});
+
 		//
 		// Catch keypresses.  This makes training the neural network MUCH faster.
 		//
 		$(document).on("keydown", function(e) {
 
 			var code = (e.keyCode || e.which);
-			console.log(code); // Debugging
+			//console.log(code); // Debugging
 
 			if (code == 89) {
 				// "y"
@@ -92,6 +103,10 @@ block js-footer
 			} else if (code == 72) {
 				// "h"
 				window.location = "/";
+
+			} else if (code == 67) {
+				// "c"
+				$("#button_clear").click();
 
 			} else if (code == 71) {
 				// "g"
