@@ -53,4 +53,27 @@ block content
 
 block js-footer
 
+	script(type="text/javascript").
+		//
+		// Catch keypresses.  This makes training the neural network MUCH faster.
+		//
+		$(document).on("keydown", function(e) {
+
+			var code = (e.keyCode || e.which);
+			console.log(code); // Debugging
+
+			if (code == 72) {
+				window.location = "/";
+
+			} else if (code == 71) {
+				window.location = "/guess";
+
+			}
+	
+			});
+
+
+
+
+
 

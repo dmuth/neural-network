@@ -88,6 +88,7 @@ block content
 
 
 block js-footer
+
 	script(type="text/javascript").
 		//
 		// Catch keypresses.  This makes training the neural network MUCH faster.
@@ -106,12 +107,17 @@ block js-footer
 			} else if (code == 84) {
 				$("#button_train").click();
 
+			} else if (code == 72) {
+				window.location = "/";
+
 			} else if (code == 71) {
 				window.location = "/guess";
 
 			}
-
-
+	
 			});
+
+
+
 
 
