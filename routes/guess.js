@@ -65,6 +65,7 @@ module.exports = function init() {
 			});
 
 		res.render("guess", { 
+			menu: { guess: "active" },
 			data: guesses,
 		});
 

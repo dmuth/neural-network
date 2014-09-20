@@ -56,6 +56,7 @@ router.get('/', function(req, res) {
 	}
 
 	res.render('index', { 
+		menu: { home: "active" },
 		color: color,
 		message: message,
 		nn_length: length,
