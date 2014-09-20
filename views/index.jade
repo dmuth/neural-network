@@ -11,13 +11,15 @@ block content
 					span(class="icon-bar")
 					span(class="icon-bar")
 					span(class="icon-bar")
-				a(class="navbar-brand" href="#") #{title}
+				a(class="navbar-brand" href="#") Neural Network
 
 			// Wide menu for desktops
 			div(class="collapse navbar-collapse")
 				ul(class="nav navbar-nav")
 					li(class="active")
-						a(href="#") Home
+						a(href="/") Home
+					li
+						a(href="guess") Take (G)uesses
 					//li
 					//	a(href="#about") About
 					//li
@@ -62,18 +64,18 @@ block content
 					p.
 						Number of items trained: #{num_trained}
 
-					if red_guess
-						p Guess on if this is red: #{red_guess}
+					if guess.red_guess
+						p Guess on if this is red: #{guess.red_guess}
 
 						div(class="progress")
 							div(
-								class="progress-bar progress-bar-#{percent_type}" 
+								class="progress-bar progress-bar-#{guess.percent_type}" 
 								role="progressbar" 
 								aria-valuemin="0" aria-valuemax="100" 
-								style="width: #{percent_width}%;"
-								aria-valuenow="#{percent_width}" 
+								style="width: #{guess.percent_width}%;"
+								aria-valuenow="#{guess.percent_width}" 
 								)
-								| #{percent}%
+								| #{guess.percent}%
 
 					if nn_length
 						form( method="post" action="train")
@@ -93,14 +95,20 @@ block js-footer
 		$(document).on("keydown", function(e) {
 
 			var code = (e.keyCode || e.which);
-			//console.log(code); // Debugging
+			console.log(code); // Debugging
 
 			if (code == 89) {
 				$("#button_yes").click();
+
 			} else if (code == 78) {
 				$("#button_no").click();
+
 			} else if (code == 84) {
 				$("#button_train").click();
+
+			} else if (code == 71) {
+				window.location = "/guess";
+
 			}
 
 

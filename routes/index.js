@@ -3,7 +3,9 @@ var express = require('express');
 var router = express.Router();
 
 var colors = require("../lib/randomColor");
+var guess = require("../lib/model/guess")
 var nn = require("../lib/nn/rgb");
+
 
 
 //
@@ -15,6 +17,11 @@ router.post("/add", require("./add")());
 // Train our neural network
 //
 router.post("/train", require("./train")());
+
+//
+// Take guesses
+//
+router.get("/guess", require("./guess")());
 
 
 //
@@ -42,42 +49,24 @@ router.get('/', function(req, res) {
 	var percent_width = 2;
 	var percent_type = "danger";
 
+	var guess_result = {};
 	if (num_trained) {
 		var input = {
 			r: color.red,
 			g: color.green,
 			b: color.blue,
 			};
-		red_guess = nn.guess(input).red;
-		percent = Math.floor(red_guess * 100);
 
-		if (percent >= 90) {
-			percent_type = "success";
-
-		} else if (percent >= 75) {
-			percent_type = "warning";
-
-		}
-
-		//
-		// This ensures a minimum percentage width
-		//
-		if (percent > 2) {
-			percent_width = percent;
-		}
+		guess_result = guess.go(input);
 
 	}
 
 	res.render('index', { 
-		title: "Neural Network", 
 		color: color,
 		message: message,
 		nn_length: length,
 		num_trained: num_trained,
-		red_guess: red_guess,
-		percent: percent,
-		percent_width: percent_width,
-		percent_type: percent_type,
+		guess: guess_result,
 		});
 
 });
