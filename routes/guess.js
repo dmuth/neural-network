@@ -31,7 +31,7 @@ module.exports = function init() {
 
 		for (var i=0; i<num; i++) {
 
-			var color = colors.getRandomRGB(4);
+			var color = colors.getRandomRGB();
 			var input = {
 				r: color.red,
 				g: color.green,
