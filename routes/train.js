@@ -31,8 +31,8 @@ module.exports = function init() {
 		var result = nn.train(options);
 
 		req.session.message = util.format(
-				"Neural network trained! (Iterations: %d, Error: %d)",
-				result.iterations, result.error
+				"Neural network trained! (Iterations: %d, Error: %d, Elapsed: %ds)",
+				result.iterations, result.error, result.elapsed
 				);
 		
 		res.redirect("/");
