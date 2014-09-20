@@ -11,7 +11,7 @@ module.exports = function init() {
 	return(function(req, res) {
 
 		nn.clear();
-		eq.session.message = "Neural network cleared!";
+		req.session.message = "Neural network cleared!";
 		res.redirect("/");
 
 	});
