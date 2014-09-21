@@ -32,9 +32,14 @@ router.get("/clear", require("./clear")());
 //
 // The front page.
 //
+// Optional GET data: 
+// - red_bias
+//
 router.get('/', function(req, res) {
 
-	var color = colors.getRandomRGB(4);
+	var red_bias = req.query.red_bias || 1;
+	var color = colors.getRandomRGB(4, { bias_red: red_bias });
+
 
 	//
 	// Make a copy of the message than wipe it from the session, 
