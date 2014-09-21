@@ -28,6 +28,7 @@ suite("Random Colors", function() {
 
 	});
 
+
 	test("RGB to the nearest 4", function(done) {
 
 		for (var i=0; i<20; i++) {
@@ -38,6 +39,28 @@ suite("Random Colors", function() {
 
 		}
 
+
+		done();
+
+	});
+
+
+	test("RGB with red bias", function(done) {
+
+		var result = color.getRandomRGB(0, {bias_red: 1} );
+		result.red.should.not.equal("00");
+
+		var result = color.getRandomRGB(4, {bias_red: 2} );
+		result.red.should.not.equal("00");
+
+		var result = color.getRandomRGB(4, {bias_red: 3} );
+		result.red.should.not.equal("00");
+
+		var result = color.getRandomRGB(4, {bias_red: 0} );
+		result.red.should.equal("00");
+
+		var result = color.getRandomRGB(4);
+		result.red.should.not.equal("00");
 
 		done();
 
