@@ -69,7 +69,10 @@ suite("/add", function() {
 				}}, cb);
 
 		}, function(response, body, cb) {
-			response.statusCode.should.equal(302);
+			//
+			// CSRF protection should disallow this
+			//
+			response.statusCode.should.equal(403);
 			cb();
 
 		}], function(error) {
