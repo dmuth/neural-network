@@ -1,3 +1,4 @@
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,6 +6,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session')
+
+var csrf = require("csurf");
 
 var routes = require('./routes/index');
 
@@ -16,11 +19,17 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-if (process.env.NODE_ENV) {
+
+//
+// No logging for unit tests, regular logging for production, colorful logging for dev
+//
+if (process.env.NODE_ENV == "test") {
+} else if (process.env.NODE_ENV) {
 	app.use(logger('combined'));
 } else {
 	app.use(logger('dev'));
 }
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,15 +41,17 @@ app.use(session({
 	saveUninitialized: true,
 	}))
 
+app.use(csrf());
 
+//
+// Handle broken CSRF
+//
+app.use(function (err, req, res, next) {
+  if (err.code !== 'EBADCSRFTOKEN') return next(err)
+  res.status(403)
+  res.send('session has expired or form tampered with')
+})
 
-/*
-TODO: 
-- /guess endpoint that shows like 10 small boxes, and guesses
-- look into csrf module to require a visit to the page itself
-	- csurf module?
-- bootstrap CSS
-*/
 
 app.use('/', routes);
 

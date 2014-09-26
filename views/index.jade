@@ -28,6 +28,7 @@ block content
 						input(type="hidden", name="color_red", value="#{color.red}")
 						input(type="hidden", name="color_green", value="#{color.green}")
 						input(type="hidden", name="color_blue", value="#{color.blue}")
+						input(type="hidden", name="_csrf", value="#{csrfToken}")
 
 						div#buttons
 							button(type="submit" class="btn btn-lg btn-success" 
@@ -58,6 +59,7 @@ block content
 
 					if nn_length
 						form( method="post" action="train")
+							input(type="hidden", name="_csrf", value="#{csrfToken}")
 							button(type="submit" class="btn btn-lg btn-success" 
 								id="button_train"
 								value="Train Neural Network based on current guesses"

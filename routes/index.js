@@ -67,6 +67,7 @@ router.get('/', function(req, res) {
 
 	res.render('index', { 
 		menu: { home: "active" },
+		csrfToken: req.csrfToken(),
 		color: color,
 		message: message,
 		nn_length: length,
