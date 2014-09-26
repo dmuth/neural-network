@@ -19,4 +19,8 @@ var options = {
 winston.remove(winston.transports.Console);
 winston.add(winston.transports.Console, options)
 
+//
+// Set environment to "test"
+//
+process.env.NODE_ENV = "test";
 
