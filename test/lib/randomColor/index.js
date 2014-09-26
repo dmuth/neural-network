@@ -3,9 +3,9 @@
 */
 
 
-var _common = require("../_common");
+var _common = require("../../_common");
 var should = require("should");
-var color = require("../../lib/randomColor");
+var color = require("../../../lib/randomColor");
 
 
 suite("Random Colors", function() {
