@@ -51,7 +51,7 @@ suite("/add", function() {
 			cb();
 
 		}], function(error) {
-				done(error);
+			done(error);
 
 		});
 
@@ -59,8 +59,27 @@ suite("/add", function() {
 
 
 	test("POST /add", function(done) {
-		done();
+
+		async.waterfall([function(cb) {
+			request.post({url: "http://localhost:3001/add", 
+				formData: {
+					color_red: "11",
+					color_green: "22",
+					color_blue: "33",
+				}}, cb);
+
+		}, function(response, body, cb) {
+			response.statusCode.should.equal(302);
+			cb();
+
+		}], function(error) {
+			done(error);
+
+		});
+
+
 	});
+
 
 
 });
