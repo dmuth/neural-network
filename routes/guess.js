@@ -24,9 +24,16 @@ module.exports = function init() {
 		}
 
 		//
+		// We can specify the number of guess, but there's an upper limit.
+		//
+		var num = req.query.num || 1000;
+		if (num > 10000) {
+			num = 10000;
+		}
+
+		//
 		// Make our guesses
 		//
-		var num = 100;
 		var guesses = [];
 
 		for (var i=0; i<num; i++) {
