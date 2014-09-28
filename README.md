@@ -7,9 +7,17 @@ I wanted to get into machine learning and decided that a good way to start would
 After spending a few weeks trying to implement my own neural network, it was pointed out to me by friends that this is an awful idea, as the math is so complex that the chances of introducing a tiny error which renders the whole network unusable is near limitless.  Instead, I downloaded the excellent [Node Brain](https://github.com/harthur/brain) module which already implments a neural network.  If you haven't checked out Brain, please give it a try.
 
 
+## Prerequisites
+
+A relatively recent verison of Node.js.  You can find downloads for your platform [over here](http://nodejs.org/download/).
+
+
+
 ## Installation
 
 - Download a copy of this repo: `git@github.com:dmuth/neural-network.git`
+- Type `cd neural-network`
+- Type `npm install` to install the third-party modules this app depends on
 - Type `npm start`
 - Point your browser to [http://localhost:3000/](http://localhost:3000/)
 
