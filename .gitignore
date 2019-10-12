@@ -6,3 +6,9 @@ node_modules/
 
 npm-debug.log
 
+# Steve Jobs
+.DS_Store
+
+# Don't save this (for now...?)
+package-lock.json
+
