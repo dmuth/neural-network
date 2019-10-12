@@ -12,3 +12,7 @@ npm-debug.log
 # Don't save this (for now...?)
 package-lock.json
 
+# Vim
+*.swp
+*~
+
