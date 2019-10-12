@@ -2,7 +2,6 @@
 FROM alpine
 
 RUN apk add bash nodejs npm
-#RUN apk add python pkgconf
 
 COPY entrypoint.sh /
 
