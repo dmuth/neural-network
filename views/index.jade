@@ -57,6 +57,9 @@ block content
 								)
 								| #{guess.percent}%
 
+					//
+					// If we have items in our neutral network, offer the chance to train it.
+					//
 					if nn_length
 						form( method="post" action="train")
 							input(type="hidden", name="_csrf", value="#{csrfToken}")
@@ -69,6 +72,13 @@ block content
 								id="button_clear"
 								value="Clear"
 								) (C)lear Neural Network
+							= " "
+							a(href="guess" class="btn btn-lg btn-success") Take (G)uesses
+
+					br
+					a(href="/" class="btn btn-lg btn-success") (H)ome (Generate another color)
+					= " "
+					a(href="/?red_bias=2" class="btn btn-lg btn-success") (S) Secret - 2x the Red value
 
 	div.footer
 
@@ -112,6 +122,7 @@ block js-footer
 
 			} else if (code == 83) {
 				// "s"
+				//console.log("Secret pressed!");
 				window.location = "/?red_bias=2";
 
 			} else if (code == 71) {

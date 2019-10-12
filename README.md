@@ -53,6 +53,7 @@ While experimenting with this, I saw that a properly trained neural network coul
 
 # TODO
 
+- Clean up UI a little on main page, the buttons are kinda haphazard
 - Image rollover on guess page to enter data
 - /history page to get all training data from neural network and display original guess and current guess
 
