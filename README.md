@@ -51,6 +51,12 @@ Try making about 10 guesses, then train the neural network.  Future page views w
 While experimenting with this, I saw that a properly trained neural network could do a decent job of picking out the color red with as few as 10-20 gueses.  This is amazing.  Conversaly, a network fed poor quality data (lots of not-red colros) would still perform poorly despite having 50+ pieces of data in it.  As I learned, neureal networks are great at spotting **signals within a data set**.  If your data is poor quality and there is little signal, the output of your neural network will also be low quality.
 
 
+## Development
+
+- `./bin/devel.sh` - Spin up a Docker Container with an interactive shell
+- `./bin/push.sh` - Push Docker container to Docker Hub
+
+
 # TODO
 
 - Clean up UI a little on main page, the buttons are kinda haphazard
