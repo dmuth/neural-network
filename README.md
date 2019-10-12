@@ -12,15 +12,10 @@ After spending a few weeks trying to implement my own neural network, it was poi
 A relatively recent verison of Node.js.  You can find downloads for your platform [over here](http://nodejs.org/download/).
 
 
+## Usage
 
-## Installation
-
-- Download a copy of this repo: `git@github.com:dmuth/neural-network.git`
-- Type `cd neural-network`
-- Type `npm install` to install the third-party modules this app depends on
-- Type `npm start`
+- `docker run -p3000:3000 dmuth1/nodejs-neural-network`
 - Point your browser to [http://localhost:3000/](http://localhost:3000/)
-
 
 
 ## Usage
