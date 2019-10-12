@@ -68,6 +68,7 @@ goes against that.  I may re-evaluate this decision in the future.
 
 # TODO
 
+- Migrate from Jade to Pug, but it seems to break the csrf module when I do that...
 - Clean up UI a little on main page, the buttons are kinda haphazard
 - Image rollover on guess page to enter data
 - /history page to get all training data from neural network and display original guess and current guess
