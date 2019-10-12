@@ -14,5 +14,5 @@ cd ..
 echo "# "
 echo "# Running Docker container..."
 echo "# "
-docker run -p3000:3000 -v $(pwd):/mnt -it nodejs-neural-network 
+docker run -p3000:3000 dmuth1/nodejs-neural-network 
 
