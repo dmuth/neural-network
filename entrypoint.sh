@@ -22,5 +22,5 @@ then
 	exec /bin/bash
 fi
 
-# TODO: Default action goes here. :-)  Probably npm start
+npm start
 
