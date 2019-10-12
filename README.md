@@ -51,6 +51,15 @@ Try making about 10 guesses, then train the neural network.  Future page views w
 While experimenting with this, I saw that a properly trained neural network could do a decent job of picking out the color red with as few as 10-20 gueses.  This is amazing.  Conversaly, a network fed poor quality data (lots of not-red colros) would still perform poorly despite having 50+ pieces of data in it.  As I learned, neureal networks are great at spotting **signals within a data set**.  If your data is poor quality and there is little signal, the output of your neural network will also be low quality.
 
 
+## Brain.js
+
+The Node Brain module has been discontinued, in favor of <a href="https://github.com/BrainJS/brain.js">brain.js</a>.  I have no plans to use it at this time, however, as the install
+process is _insane_.  5 minutes plus of compiling, only to run into many problems on Alpine
+Linux with missing packages along the way.  My goal for build this app was to have it
+deployed in a lightwight Docker container, and having to install dozens and dozens of packages
+goes against that.  I may re-evaluate this decision in the future.
+
+
 ## Development
 
 - `./bin/devel.sh` - Spin up a Docker Container with an interactive shell
